@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:frascati="http://frascati.ow2.org/xmlns/sca/1.1" name="FBack-Loop">
+  <component name="KB">
+    <implementation.composite name="KBRMIService.composite"/>
+  </component>
+  <component name="Analyzer">
+    <implementation.composite name="AnalyzerRMIService.composite"/>
+  </component>
+
+  <component name="Monitor">
+    <implementation.composite name="MonitorRMIService.composite"/>
+  </component>
+  
+</composite>

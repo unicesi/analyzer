@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:frascati="http://frascati.ow2.org/xmlns/sca/1.1" name="MonitorRMIService" targetNamespace="http://docs.oasis-open.org/ns/opencsa/sca/200912">
+	
+	<component name="MonitorServiceComponent">
+
+		<implementation.java class="monitor.lib.MonitorImpl"/>
+
+		<service name="MonitorService">
+			<interface.java interface="monitor.api.MonitorService"/>
+		</service>
+
+		<reference name="kbService"/>
+		<reference name="analyzerService"/>
+
+	</component>
+
+	<service name="MonitorService" promote="MonitorServiceComponent/MonitorService">
+		<frascati:binding.rmi host="localhost" port="1100" serviceName="Monitor"/>
+	</service>
+
+	<reference name="kbService" promote="MonitorServiceComponent/kbService">
+		<frascati:binding.rmi host="localhost" port="1103" serviceName="KB"/>
+	</reference>
+
+	<reference name="analyzerService" promote="MonitorServiceComponent/analyzerService">
+		<frascati:binding.rmi host="localhost" port="1101" serviceName="Analyzer"/>
+	</reference>
+
+</composite>

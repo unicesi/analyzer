@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<composite xmlns="http://www.osoa.org/xmlns/sca/1.0" xmlns:frascati="http://frascati.ow2.org/xmlns/sca/1.1" name="KBRMIService" targetNamespace="http://docs.oasis-open.org/ns/opencsa/sca/200912">
+	
+	<component name="KBServiceComponent">
+		
+		<implementation.java class="kb.lib.KBImpl"/>
+		
+		<service name="KBService">
+			<interface.java interface="kb.api.KBService"/>
+		</service>
+		
+	</component>
+	
+	<service name="KBService" promote="KBServiceComponent/KBService">
+		<frascati:binding.rmi host="localhost" port="1103" serviceName="KB"/>	
+	</service>
+
+</composite>
