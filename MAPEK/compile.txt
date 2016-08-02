@@ -1,0 +1,5 @@
+This are the compile instructions for deploy this project
+
+Have the java_home set up to a 1.6 jdk
+
+frascati compile src MAPEK /home/camilo/Documents/Mapek\ execution/MAPEK/library-0.0.1-SNAPSHOT-jar-with-dependencies.jar:/home/camilo/Documents/Mapek\ execution/MAPEK/commons-math3-3.5.jar
