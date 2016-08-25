@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd"
+	version="3.2">
+	<display-name>movieplex7</display-name>
+	<interceptors>
+		<interceptor>
+			<interceptor-class>org.glassfish.movieplex7.interceptors.SalesInterceptor</interceptor-class>
+			<around-invoke>
+				<method-name>intercept</method-name>
+			</around-invoke>
+		</interceptor>
+	</interceptors>
+
+	<assembly-descriptor>
+		
+		<interceptor-binding>
+			<ejb-name>SalesFacadeREST</ejb-name>
+			<interceptor-class>org.glassfish.movieplex7.interceptors.SalesInterceptor</interceptor-class>
+		</interceptor-binding>
+	</assembly-descriptor>
+
+</ejb-jar>
