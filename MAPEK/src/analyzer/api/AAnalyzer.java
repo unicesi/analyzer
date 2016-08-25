@@ -1,6 +1,12 @@
 package analyzer.api;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import kb.api.KBService;
 
@@ -9,6 +15,7 @@ import org.osoa.sca.annotations.Service;
 
 import sloContractLibrary.ContextCondition;
 import sloContractLibrary.QoSContract;
+
 import contextLibrary.Diagnosis;
 import contextLibrary.IContextModel;
 import contextLibrary.Information;
@@ -26,8 +33,13 @@ public abstract class AAnalyzer implements AnalyzerService {
 	/*
 	 * References to other components in the MAPE loop
 	 */
+//	protected AMCService amcService;
 	protected KBService kbService;
 
+//	@Reference
+//	public void setAmcService(AMCService amcService) {
+//		this.amcService = amcService;
+//	}
 
 	@Reference
 	public void setKbService(KBService kbService) {
@@ -47,7 +59,42 @@ public abstract class AAnalyzer implements AnalyzerService {
 		 * component my matching the with the qosContracts
 		 */
 		startAnalyzing();
-
+//
+//		/*
+//		 * Step n:
+//		 */
+//		if (diagnosis != null && diagnosis.size() > 0) {
+//			// invokes the planner component to build the adaptation plan
+//			System.out
+//					.println("[Analyzer Service] - Sending diagnosis to the Planner");
+//			try {
+//				PlannerService plannerService = (PlannerService) Naming
+//						.lookup("//localhost:1104/Planner");
+//				System.out
+//						.println("[Analyzer Service] - Testing Planner component connection: "
+//								+ plannerService.getAliveMessage());
+//				// iterates the diagnosis array and sends it to the planner
+//				for (int i = 0; i < diagnosis.size(); i++) {
+//					plannerService.doAdaptationPlan(diagnosis.get(i));
+//				}
+//
+//				// Time Stamp
+//				Calendar calendarTimeStamp = Calendar.getInstance();
+//				//System.out.println("Analyzer ended at: " + calendarTimeStamp.getTimeInMillis());
+//				
+//			} catch (MalformedURLException e) {
+//				System.err
+//						.println("[Analyzer Service] - (MalformedURLException)");
+//				// e.printStackTrace();
+//			} catch (RemoteException e) {
+//				System.err
+//						.println("[Analyzer Service] - Analyzer component connection failed (RemoteException)");
+//				// e.printStackTrace();
+//			} catch (NotBoundException e) {
+//				System.err.println("[Analyzer Service] - (NotBoundException)");
+//				// e.printStackTrace();
+//			}
+//		}
 		System.out.println("[Analyzer Service Stopped]");
 	}
 
@@ -80,10 +127,35 @@ public abstract class AAnalyzer implements AnalyzerService {
 	 * the SLO contracts as QoSContract objects
 	 */
 	protected void loadSLOcontracts() {
+//		try {
+		
+			
+//			if (amcService == null) {
+//				amcService = (AMCService) Naming.lookup("//localhost:1099/AMC");
+//			}
+//			System.out
+//					.println("[Analyzer Service] - Testing AMC component connection: "
+//							+ amcService.getAliveMessage());
+
+			// 1. Invokes and loads the sloContracts from the AMC Service
+			// Component
+//			qosContracts = amcService.getQosContract();
 		qosContracts = kbService.getAnalyzingPolicies();
 
 			System.out.println("[Analyzer Service] - " + qosContracts.length
 					+ " Slo contracts loaded from the AMC component");
+
+//		} catch (MalformedURLException e) {
+//			System.err.println("[Analyzer Service] - (MalformedURLException)");
+//			// e.printStackTrace();
+//		} catch (RemoteException e) {
+//			System.err
+//					.println("[Analyzer Service] - AMC component connection failed (RemoteException)");
+//			// e.printStackTrace();
+//		} catch (NotBoundException e) {
+//			System.err.println("[Analyzer Service] - (NotBoundException)");
+//			// e.printStackTrace();
+//		}
 
 	}
 	

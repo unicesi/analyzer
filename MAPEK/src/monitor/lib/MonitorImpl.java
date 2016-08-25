@@ -4,16 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import monitor.api.AMonitor;
 import pascani.lang.Event;
 import pascani.lang.events.TimeLapseEvent;
 import pascani.lang.util.EventFilter;
 import policiesLibrary.monitor.MonitoringPolicy;
-import contextLibrary.ContextData;
-import contextLibrary.ContextEntity;
-import contextLibrary.ContextProperty;
-import contextLibrary.Information;
+import monitor.api.*;
+import contextLibrary.*;
 
 /**
  * Component: Monitor Class : MonitorImpl

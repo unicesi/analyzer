@@ -2,7 +2,7 @@ package policiesLibrary.monitor;
 
 import java.io.Serializable;
 
-import sloContractLibrary.ContextCondition;
+import sloContractLibrary.*;
 
 @SuppressWarnings("serial")
 public class MonitoringPolicy implements Serializable{

@@ -3,6 +3,8 @@ package sloContractLibrary;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import contextLibrary.ContextEntity;
+
 @SuppressWarnings("serial")
 public class SloPredicate  implements Serializable{
 

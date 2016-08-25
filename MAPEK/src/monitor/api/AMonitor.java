@@ -4,9 +4,11 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
 
 import kb.api.KBService;
 
@@ -14,7 +16,9 @@ import org.osoa.sca.annotations.Reference;
 import org.osoa.sca.annotations.Service;
 
 import pascani.lang.Event;
+import pascani.lang.events.TimeLapseEvent;
 import pascani.lang.infrastructure.ProbeProxy;
+import pascani.lang.util.ServiceManager;
 import policiesLibrary.monitor.MonitoringPolicy;
 import analyzer.api.AnalyzerService;
 import contextLibrary.ContextData;
@@ -85,12 +89,12 @@ public abstract class AMonitor implements MonitorService {
 		
 		if (information != null && information.size() > 0) {
 			// invokes the analyzer component to analyze these information
-			try {
+//			try {
 				//TODO
-				if (analyzerService == null) {
-					analyzerService = (AnalyzerService) Naming
-							.lookup("//localhost:1101/Analyzer");
-				}
+//				if (analyzerService == null) {
+//					analyzerService = (AnalyzerService) Naming
+//							.lookup("//localhost:1101/Analyzer");
+//				}
 				
 				System.out
 						.println("[Monitor Service] - Testing Analyzer component connection: "
@@ -110,19 +114,19 @@ public abstract class AMonitor implements MonitorService {
 				System.out
 						.println("[Monitor Service] - Information sent to be analyzer by the Analyzer component");
 				
-			} catch (MalformedURLException e) {
-				System.err
-						.println("[Monitor Service] - (MalformedURLException)");
-				// e.printStackTrace();
-			} catch (RemoteException e) {
-				System.err
-						.println("[Monitor Service] - Analyzer component connection failed (RemoteException)");
-				// e.printStackTrace();
-			} catch (NotBoundException e) {
-				System.err
-						.println("[Monitor Service] - (NotBoundException)");
-				// e.printStackTrace();
-			}
+	//		} catch (MalformedURLException e) {
+	//			System.err
+	//					.println("[Monitor Service] - (MalformedURLException)");
+	//			// e.printStackTrace();
+	//		} catch (RemoteException e) {
+	//			System.err
+	//					.println("[Monitor Service] - Analyzer component connection failed (RemoteException)");
+	//			// e.printStackTrace();
+	//		} catch (NotBoundException e) {
+	//			System.err
+	//					.println("[Monitor Service] - (NotBoundException)");
+	//			// e.printStackTrace();
+	//		}
 		}
 	}
 	
@@ -158,12 +162,12 @@ public abstract class AMonitor implements MonitorService {
 			 */
 			if (information != null && information.size() > 0) {
 				// invokes the analyzer component to analyze these information
-				try {
+//				try {
 					//TODO
-					if (analyzerService == null) {
-						analyzerService = (AnalyzerService) Naming
-								.lookup("//localhost:1101/Analyzer");
-					}
+//					if (analyzerService == null) {
+//						analyzerService = (AnalyzerService) Naming
+//								.lookup("//localhost:1101/Analyzer");
+//					}
 					
 					System.out
 							.println("[Monitor Service] - Testing Analyzer component connection: "
@@ -187,19 +191,19 @@ public abstract class AMonitor implements MonitorService {
 					Calendar calendarTimeStamp = Calendar.getInstance();
 					//System.out.println("Monitor ended at: " + calendarTimeStamp.getTimeInMillis());
 					
-				} catch (MalformedURLException e) {
-					System.err
-							.println("[Monitor Service] - (MalformedURLException)");
-					// e.printStackTrace();
-				} catch (RemoteException e) {
-					System.err
-							.println("[Monitor Service] - Analyzer component connection failed (RemoteException)");
-					// e.printStackTrace();
-				} catch (NotBoundException e) {
-					System.err
-							.println("[Monitor Service] - (NotBoundException)");
-					// e.printStackTrace();
-				}
+//				} catch (MalformedURLException e) {
+//					System.err
+//							.println("[Monitor Service] - (MalformedURLException)");
+//					// e.printStackTrace();
+//				} catch (RemoteException e) {
+//					System.err
+//							.println("[Monitor Service] - Analyzer component connection failed (RemoteException)");
+//					// e.printStackTrace();
+//				} catch (NotBoundException e) {
+//					System.err
+//							.println("[Monitor Service] - (NotBoundException)");
+//					// e.printStackTrace();
+//				}
 			} else
 				System.out
 						.println("[Monitor Service] - No information has been gathered");
@@ -229,11 +233,11 @@ public abstract class AMonitor implements MonitorService {
 	 * the monitoring policies as MonitoringPolicy objects
 	 */
 	private void loadMonitoringPolicies() {
-		try {
+//		try {
 			//TODO
-			if (kbService == null) {
-				kbService = (KBService) Naming.lookup("//localhost:1103/KB");
-			}
+//			if (kbService == null) {
+//				kbService = (KBService) Naming.lookup("//localhost:1103/KB");
+//			}
 			
 			System.out
 					.println("[Monitor Service] - Testing KB component connection: "
@@ -243,20 +247,20 @@ public abstract class AMonitor implements MonitorService {
 			
 			System.out.println("[Monitor Service] - "+ monitoringPolicies.length+ " Monitoring policies loaded from the KB component");
 
-		} catch (MalformedURLException e) {
-			System.err.println("[Monitor Service] - (MalformedURLException)");
-			// e.printStackTrace();
-		} catch (RemoteException e) {
-			System.err
-					.println("[Monitor Service] - KB component connection failed (RemoteException)");
-			// e.printStackTrace();
-		} catch (NotBoundException e) {
-			System.err.println("[Monitor Service] - (NotBoundException)");
-			// e.printStackTrace();
-		}catch (Exception e){
-			System.out.println("[Monitor Service Error]");
-			e.printStackTrace();
-		}
+//		} catch (MalformedURLException e) {
+//			System.err.println("[Monitor Service] - (MalformedURLException)");
+//			// e.printStackTrace();
+//		} catch (RemoteException e) {
+//			System.err
+//					.println("[Monitor Service] - KB component connection failed (RemoteException)");
+//			// e.printStackTrace();
+//		} catch (NotBoundException e) {
+//			System.err.println("[Monitor Service] - (NotBoundException)");
+//			// e.printStackTrace();
+//		}catch (Exception e){
+//			System.out.println("[Monitor Service Error]");
+//			e.printStackTrace();
+//		}
 
 	}
 

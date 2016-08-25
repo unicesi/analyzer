@@ -2,6 +2,8 @@ package sloContractLibrary;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import contextLibrary.*;
+
 @SuppressWarnings("serial")
 public class ContextCondition implements Serializable {
 
