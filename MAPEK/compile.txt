@@ -1,4 +1,4 @@
-This are the compile instructions for deploy this project
+This are the compile instructions for deploy this project:
 
 Have the java_home set up to a 1.6 jdk
 
