@@ -2,10 +2,10 @@ package policiesLibrary.monitor;
 
 import java.io.Serializable;
 
-import sloContractLibrary.*;
+import sloContractLibrary.ContextCondition;
 
 @SuppressWarnings("serial")
-public class MonitoringPolicy implements Serializable{
+public class MonitoringPolicy implements Serializable {
 
 	private String name;
 	private ContextCondition monitoringContext;
@@ -38,6 +38,5 @@ public class MonitoringPolicy implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 }

@@ -8,12 +8,11 @@ import org.osoa.sca.annotations.Service;
 import policiesLibrary.monitor.MonitoringPolicy;
 import sloContractLibrary.QoSContract;
 
-
 @Service(KBService.class)
 public abstract class AKB implements KBService {
 
 	protected ArrayList<MonitoringPolicy> monitoringPolicies;
-	
+
 	/**
 	 * @uml.property name="sloContrats"
 	 * @uml.associationEnd multiplicity="(0 -1)"
@@ -26,12 +25,11 @@ public abstract class AKB implements KBService {
 	 */
 	@SuppressWarnings("unused")
 	protected Calendar initDateTime;
-	
+
 	@Override
 	public String getAliveMessage() {
 		return "KB is Alive!";
 	}
-
 
 	@Override
 	public QoSContract[] getAnalyzingPolicies() {
@@ -49,11 +47,12 @@ public abstract class AKB implements KBService {
 
 		// Time Stamp
 		Calendar calendarTimeStamp = Calendar.getInstance();
-		//System.out.println("AMC ended at: " + calendarTimeStamp.getTimeInMillis());
+		// System.out.println("AMC ended at: " +
+		// calendarTimeStamp.getTimeInMillis());
 
 		return qosContractArray;
 	}
-	
+
 	public abstract double[][] getHistorics();
 
 	@Override
@@ -71,7 +70,7 @@ public abstract class AKB implements KBService {
 	public MonitoringPolicy[] getMonitoringPolicies() {
 		initMonitoringPolicies();
 		System.out.println("[KB Service] - Delivering Monitoring Policies");
-		MonitoringPolicy[] monitoringPoliciesArray=null;
+		MonitoringPolicy[] monitoringPoliciesArray = null;
 		if (monitoringPolicies != null) {
 			monitoringPoliciesArray = new MonitoringPolicy[monitoringPolicies
 					.size()];
@@ -81,22 +80,24 @@ public abstract class AKB implements KBService {
 			}
 
 		} else
-			System.out.println("[KB Service] - Monitoring policies array is null");
-		
+			System.out
+					.println("[KB Service] - Monitoring policies array is null");
+
 		// Time Stamp
-				Calendar calendarTimeStamp = Calendar.getInstance();
-				//System.out.println("KB ended at: " + calendarTimeStamp.getTimeInMillis());
-		
+		Calendar calendarTimeStamp = Calendar.getInstance();
+		// System.out.println("KB ended at: " +
+		// calendarTimeStamp.getTimeInMillis());
+
 		return monitoringPoliciesArray;
-		
+
 	}
-	
+
 	/**
 	 * Initiates KB information. Some user interface is required to load real
 	 * information about the monitoring policies.
 	 * 
 	 */
-	protected abstract void initMonitoringPolicies() ;
+	protected abstract void initMonitoringPolicies();
 
 	protected abstract void initSLOEntities();
 }

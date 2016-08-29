@@ -9,9 +9,6 @@ public class SloObligation implements Serializable {
 	private SloPredicate predicate;
 	private ContextCondition contextCondition;
 
-	
-	
-	
 	public String getContextEventType() {
 		return contextEventType;
 	}
@@ -19,8 +16,6 @@ public class SloObligation implements Serializable {
 	public void setContextEventType(String contextEventType) {
 		this.contextEventType = contextEventType;
 	}
-
-	
 
 	public SloPredicate getPredicate() {
 		return predicate;

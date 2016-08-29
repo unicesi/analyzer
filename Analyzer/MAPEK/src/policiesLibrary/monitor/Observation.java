@@ -6,11 +6,11 @@ import java.io.Serializable;
 public class Observation implements Serializable {
 
 	public final static int TYPE_INVOKE = 1;
-	
+
 	public final static int OPE_COUNT = 2;
 	public final static int OPE_AVERAGE = 3;
-	public final static int OPE_SUM= 4;
-	
+	public final static int OPE_SUM = 4;
+
 	private int type;
 	private int timeSeconds;
 	private int operation;
@@ -46,4 +46,3 @@ public class Observation implements Serializable {
 	}
 
 }
-

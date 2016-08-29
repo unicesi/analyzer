@@ -15,9 +15,9 @@ public class QoSProperty implements Serializable {
 	public final static String RELIABILITY = "Reliability";
 	public final static String MAINTAINABILITY = "Maintainability";
 	public final static String CONFIDENTIALITY = "Confidentiality";
-	public final static String INTERACT ="Interact";
-	public final static String COMPLEX ="Complex";
-	public final static String COUPLING_STRENGTH ="Coupling Strength";
+	public final static String INTERACT = "Interact";
+	public final static String COMPLEX = "Complex";
+	public final static String COUPLING_STRENGTH = "Coupling Strength";
 
 	public final static String PERFORMANCE = "Performance";
 	public final static String SECURITY = "Security";

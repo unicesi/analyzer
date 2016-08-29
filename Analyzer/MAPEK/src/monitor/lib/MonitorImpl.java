@@ -4,14 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
+import monitor.api.AMonitor;
 import pascani.lang.Event;
 import pascani.lang.events.TimeLapseEvent;
 import pascani.lang.util.EventFilter;
 import policiesLibrary.monitor.MonitoringPolicy;
-import monitor.api.*;
-import contextLibrary.*;
+import contextLibrary.ContextData;
+import contextLibrary.ContextEntity;
+import contextLibrary.ContextProperty;
+import contextLibrary.Information;
 
 /**
  * Component: Monitor Class : MonitorImpl
@@ -50,7 +52,7 @@ public class MonitorImpl extends AMonitor {
 		if (throughput > 0) {
 
 			buildContextData(tlEvents);
-		}		
+		}
 	}
 
 	/**
@@ -63,9 +65,9 @@ public class MonitorImpl extends AMonitor {
 		for (int i = 0; i < events.size(); i++) {
 
 			double value = events.get(i).value();
-			
+
 			long start = events.get(i).start();
-			
+
 			long end = events.get(i).end();
 
 			kbService.saveHistory(start, end, value);

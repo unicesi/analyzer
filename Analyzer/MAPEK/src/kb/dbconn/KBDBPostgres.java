@@ -124,8 +124,10 @@ public class KBDBPostgres {
 			}
 			String qoscareOp = "Sales";
 			String sql = "insert into \"QoSCareOperationsLog\" "
-					+ "(attendant_username, operation_date_ini, operation_time_ini, operation_time_end, time_diff_millis, qoscare_operation, operation_date_end) " + 
-					"values('postgres','"+getDate(start)+"',"+ start + "," + end + "," + diff + ",'" + qoscareOp + "','" + getDate(end)+"')";
+					+ "(attendant_username, operation_date_ini, operation_time_ini, operation_time_end, time_diff_millis, qoscare_operation, operation_date_end) "
+					+ "values('postgres','" + getDate(start) + "'," + start
+					+ "," + end + "," + diff + ",'" + qoscareOp + "','"
+					+ getDate(end) + "')";
 			try {
 				s.execute(sql);
 				s.close();
@@ -134,10 +136,9 @@ public class KBDBPostgres {
 						.println("We got an exception while executing our query:"
 								+ "that probably means our SQL is invalid");
 				se.printStackTrace();
-//				System.out.println(sql);
+				// System.out.println(sql);
 				System.exit(1);
-			}
-			finally {
+			} finally {
 				try {
 					c.close();
 				} catch (SQLException e) {
@@ -150,23 +151,24 @@ public class KBDBPostgres {
 	}
 
 	private String getDate(long time) {
-		long current = TimeUnit.NANOSECONDS.convert(Calendar.getInstance().getTimeInMillis(), TimeUnit.MILLISECONDS);
-		
-		long dif = current - time;
-		
-		long nanoCurrent = time + dif;
-		
-		Date date = new Date(TimeUnit.MILLISECONDS.convert(nanoCurrent, TimeUnit.NANOSECONDS));
-		
-		GregorianCalendar gcad = new GregorianCalendar();
-		
-		gcad.setTime(date);
-		
-//		System.out.println(gcad.get(3)+"/"+(gcad.get(2)+1)+"/"+gcad.get(1));
-//		return gcad.get(3)+"-"+(gcad.get(2)+1)+"-"+gcad.get(1);
-		return "5-"+(gcad.get(2)+1)+"-"+gcad.get(1);
-	}
+		long current = TimeUnit.NANOSECONDS.convert(Calendar.getInstance()
+				.getTimeInMillis(), TimeUnit.MILLISECONDS);
 
+		long dif = current - time;
+
+		long nanoCurrent = time + dif;
+
+		Date date = new Date(TimeUnit.MILLISECONDS.convert(nanoCurrent,
+				TimeUnit.NANOSECONDS));
+
+		GregorianCalendar gcad = new GregorianCalendar();
+
+		gcad.setTime(date);
+
+		// System.out.println(gcad.get(3)+"/"+(gcad.get(2)+1)+"/"+gcad.get(1));
+		// return gcad.get(3)+"-"+(gcad.get(2)+1)+"-"+gcad.get(1);
+		return "5-" + (gcad.get(2) + 1) + "-" + gcad.get(1);
+	}
 
 	public double[][] getHistorics() {
 		String urlConn = "jdbc:postgresql://localhost:5432/postgres";
@@ -203,7 +205,7 @@ public class KBDBPostgres {
 				System.exit(1);
 			}
 			try {
-				//TODO Consulta no necesario, llamado funcion
+				// TODO Consulta no necesario, llamado funcion
 				String sql = "select operation_date_ini, count(*) from \"QoSCareOperationsLog\" group by operation_date_ini";
 				ResultSet rs = s.executeQuery(sql);
 
@@ -211,8 +213,9 @@ public class KBDBPostgres {
 
 				while (rs.next()) {
 					String temp = rs.getString(1);
-//					System.out.println(temp);
-					double monitor_time = Double.parseDouble(temp.split("-")[2]);
+					// System.out.println(temp);
+					double monitor_time = Double
+							.parseDouble(temp.split("-")[2]);
 					double throughput = rs.getDouble(2);
 					data.add(monitor_time);
 					data.add(throughput);
@@ -222,10 +225,12 @@ public class KBDBPostgres {
 					int tamanio = data.size() / 2;
 					double[][] retorno = new double[tamanio][2];
 					for (int i = 0; i < tamanio; i++) {
-						retorno[i][0] = data.get(i*2);
-						retorno[i][1] = data.get(i*2+1);
-						
-						System.out.println("[KB Historics Service] - Time = "+retorno[i][0]+" Throughput = "+retorno[i][1]);
+						retorno[i][0] = data.get(i * 2);
+						retorno[i][1] = data.get(i * 2 + 1);
+
+						System.out.println("[KB Historics Service] - Time = "
+								+ retorno[i][0] + " Throughput = "
+								+ retorno[i][1]);
 					}
 
 					return retorno;
@@ -239,7 +244,6 @@ public class KBDBPostgres {
 				System.exit(1);
 			}
 
-			
 		}
 		return null;
 	}

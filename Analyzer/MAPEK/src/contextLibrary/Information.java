@@ -5,7 +5,7 @@ package contextLibrary;
  * @version 1.0
  * */
 @SuppressWarnings("serial")
-public class Information implements IContextModel{
+public class Information implements IContextModel {
 
 	/**
 	 * Constrains

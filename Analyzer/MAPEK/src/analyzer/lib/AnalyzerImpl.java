@@ -1,31 +1,18 @@
 package analyzer.lib;
 
-import java.net.MalformedURLException;
-
-import org.apache.commons.math3.*;
-import org.apache.commons.math3.stat.regression.RegressionResults;
-import org.apache.commons.math3.stat.regression.SimpleRegression;
-
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
-import kb.api.KBService;
-
-import org.osoa.sca.annotations.Reference;
-import org.osoa.sca.annotations.Service;
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 import sloContractLibrary.ContextCondition;
 import sloContractLibrary.QoSContract;
-import sloContractLibrary.QoSProperty;
-import sloContractLibrary.SloObligation;
 import sloContractLibrary.SloPredicate;
-import contextLibrary.*;
-import analyzer.api.*;
+import analyzer.api.AAnalyzer;
+import contextLibrary.ContextEntity;
+import contextLibrary.ContextProperty;
+import contextLibrary.Diagnosis;
+import contextLibrary.Information;
 
 /**
  * Component: Analyzer Class : AnalyzerImpl
@@ -37,31 +24,32 @@ import analyzer.api.*;
 
 public class AnalyzerImpl extends AAnalyzer {
 
-	
 	/*
 	 * Constructor
 	 */
 	public AnalyzerImpl() {
 		// Time Stamp
-				Calendar calendarTimeStamp = Calendar.getInstance();
-				//System.out.println("Analyzer started at: " + calendarTimeStamp.getTimeInMillis());
+		Calendar calendarTimeStamp = Calendar.getInstance();
+		// System.out.println("Analyzer started at: " +
+		// calendarTimeStamp.getTimeInMillis());
 
 		information = null;
 		diagnosis = new ArrayList<Diagnosis>();
 		System.out.println("[Analyzer Service Started]");
 	}
-	
-	//sloFuture es el umbral del día que se predijo
-	public void correlationCompliance(double d, int sloTxFuture){
-		//Metodo para recuperar el treshold
-		System.out.println("[Analyzer Predictive Service] - Threshold: "+sloTxFuture+" <vs.> Predicted: "+d);
-		
+
+	// sloFuture es el umbral del día que se predijo
+	public void correlationCompliance(double d, int sloTxFuture) {
+		// Metodo para recuperar el treshold
+		System.out.println("[Analyzer Predictive Service] - Threshold: "
+				+ sloTxFuture + " <vs.> Predicted: " + d);
+
 		if (sloTxFuture <= d) {
 			System.out.println("[Analyzer Predictive Service] - SLO Ok");
 		} else {
 			System.out.println("[Analyzer PredictiveService] - SLO Nok");
 		}
-		
+
 	}
 
 	/**
@@ -96,8 +84,8 @@ public class AnalyzerImpl extends AAnalyzer {
 			 * Further implementations must consider to evaluate data types and
 			 * values before this comparison
 			 */
-//			int currentDay = (Integer) (((Information) infoToAnalyze.get(1))
-//					.getEntity().getProperty(0).getValue());
+			// int currentDay = (Integer) (((Information) infoToAnalyze.get(1))
+			// .getEntity().getProperty(0).getValue());
 			int currentDay = 26;
 			int currentTxmin = (Integer) (((Information) infoToAnalyze.get(2))
 					.getEntity().getProperty(0).getValue());
@@ -134,24 +122,33 @@ public class AnalyzerImpl extends AAnalyzer {
 
 					System.out.println("[Analyzer Service] - Slo: " + sloTx
 							+ " <Vs.> Current: " + currentTxmin);
-					
-					
+
 					if (sloTx >= currentTxmin) {
 						System.out.println("[Analyzer Service] - SLO Ok");
-						System.out.println("[Analyzer Predictive Service] - Predicitive Analysis started");
-						System.out.println("[Analyzer Predictive Service] - Retreiving tomorrow's info");
-						int futDay = (Integer) list.get(currentDay==31?0:++i);
+						System.out
+								.println("[Analyzer Predictive Service] - Predicitive Analysis started");
+						System.out
+								.println("[Analyzer Predictive Service] - Retreiving tomorrow's info");
+						int futDay = (Integer) list.get(currentDay == 31 ? 0
+								: ++i);
 						int futTrshld = (Integer) list.get(++i);
-						System.out.println("[Analyzer Predictive Service] -	Tomorrow's info. Day: "+futDay+", Threshold: "+futTrshld);
+						System.out
+								.println("[Analyzer Predictive Service] -	Tomorrow's info. Day: "
+										+ futDay + ", Threshold: " + futTrshld);
 						correlationAnalysis(futDay, futTrshld);
 						return new Diagnosis(false, desired, current);
 					} else {
 						System.out.println("[Analyzer Service] - SLO Nok");
-						System.out.println("[Analyzer Predictive Service] - Predicitive Analysis started");
-						System.out.println("[Analyzer Predictive Service] - Retreiving tomorrow's info");
-						int futDay = (Integer) list.get(currentDay==31?0:++i);
+						System.out
+								.println("[Analyzer Predictive Service] - Predicitive Analysis started");
+						System.out
+								.println("[Analyzer Predictive Service] - Retreiving tomorrow's info");
+						int futDay = (Integer) list.get(currentDay == 31 ? 0
+								: ++i);
 						int futTrshld = (Integer) list.get(++i);
-						System.out.println("[Analyzer Predictive Service] -	Tomorrow's info. Day: "+futDay+", Threshold: "+futTrshld);
+						System.out
+								.println("[Analyzer Predictive Service] -	Tomorrow's info. Day: "
+										+ futDay + ", Threshold: " + futTrshld);
 						correlationAnalysis(futDay, futTrshld);
 						return new Diagnosis(true, desired, current);
 					}
@@ -163,19 +160,24 @@ public class AnalyzerImpl extends AAnalyzer {
 		return null;
 	}
 
-	//sloFuture -> slo next day
+	// sloFuture -> slo next day
 	@Override
 	public void correlationAnalysis(int sloFuture, int sloTxFuture) {
 		SimpleRegression regression = new SimpleRegression();
-		System.out.println("[Analyzer Predictive Service] - Correlation Analysis");
-		System.out.println("[Analyzer Predictive Service] -	Retrieving stored Throughput data");
-		double[][] data = kbService.getHistorics();//new double[][]{{0,20},{1,18},{2,18},{3,5},{4,1}};
-		
-		System.out.println("[Analyzer Predictive Service] - Adding data to regression");
+		System.out
+				.println("[Analyzer Predictive Service] - Correlation Analysis");
+		System.out
+				.println("[Analyzer Predictive Service] -	Retrieving stored Throughput data");
+		double[][] data = kbService.getHistorics();// new
+													// double[][]{{0,20},{1,18},{2,18},{3,5},{4,1}};
+
+		System.out
+				.println("[Analyzer Predictive Service] - Adding data to regression");
 		regression.addData(data);
-		
-		//TODO predecir fecha, fecha+hora.... definir unidad de tiempo
-		System.out.println("[Analyzer Predictive Service] - Predicting day "+sloFuture+"'s Throughput");
+
+		// TODO predecir fecha, fecha+hora.... definir unidad de tiempo
+		System.out.println("[Analyzer Predictive Service] - Predicting day "
+				+ sloFuture + "'s Throughput");
 		correlationCompliance(regression.predict(sloFuture), sloTxFuture);
 	}
 

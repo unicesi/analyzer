@@ -1,32 +1,38 @@
 package contextLibrary;
+
 /**
  * @author lcastane[at]icesi.edu.co Date: (05/2011)
  * @version 1.0
  * */
 
-
 @SuppressWarnings("serial")
-public class Diagnosis implements IContextModel{
+public class Diagnosis implements IContextModel {
 
 	/**
 	 * Constrains
 	 */
 	public final static int EVENT_TYPE = 1;
-	
+
 	/**
 	 * Attributes
 	 */
 	private boolean adaptation;
 	private ContextEntity desiredEntity;
 	private ContextEntity currentEntity;
-	
+
 	/**
 	 * Constructor
-	 * @param adaptation is true if is required
-	 * @param currentEntity is the contextEntity that requires adaptation with the current state
-	 * @param desiredEntity is the expected state of the entity to adapt 
+	 * 
+	 * @param adaptation
+	 *            is true if is required
+	 * @param currentEntity
+	 *            is the contextEntity that requires adaptation with the current
+	 *            state
+	 * @param desiredEntity
+	 *            is the expected state of the entity to adapt
 	 */
-	public Diagnosis(boolean adaptation, ContextEntity desiredEntity, ContextEntity currentEntity) {
+	public Diagnosis(boolean adaptation, ContextEntity desiredEntity,
+			ContextEntity currentEntity) {
 		this.adaptation = adaptation;
 		this.desiredEntity = desiredEntity;
 		this.currentEntity = currentEntity;
@@ -56,7 +62,4 @@ public class Diagnosis implements IContextModel{
 		this.currentEntity = currentEntity;
 	}
 
-	
-	
-	
 }

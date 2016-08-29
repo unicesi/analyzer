@@ -1,25 +1,25 @@
 package contextLibrary;
 
 @SuppressWarnings("serial")
-public class AdaptationActions implements IContextModel{
+public class AdaptationActions implements IContextModel {
 
 	/**
 	 * Constrains
 	 */
-	public final static int EXECUTION_TYPE_AFTER =41;
-	public final static int EXECUTION_TYPE_BEFORE =42;
-	public final static int EXECUTION_TYPE_DURING =43;
-	
-	
+	public final static int EXECUTION_TYPE_AFTER = 41;
+	public final static int EXECUTION_TYPE_BEFORE = 42;
+	public final static int EXECUTION_TYPE_DURING = 43;
+
 	/**
 	 * Attributes
 	 */
 	private String[] commands;
 	private int executionType;
 	private int planOrderNumber;
-	
+
 	/**
 	 * Constructor
+	 * 
 	 * @param commands
 	 * @param executionType
 	 * @param planOrderNumber
@@ -54,8 +54,5 @@ public class AdaptationActions implements IContextModel{
 	public void setPlanOrderNumber(int planOrderNumber) {
 		this.planOrderNumber = planOrderNumber;
 	}
-	
-		
-	
-	
+
 }

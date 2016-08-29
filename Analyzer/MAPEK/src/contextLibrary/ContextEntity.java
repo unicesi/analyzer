@@ -80,12 +80,12 @@ public class ContextEntity implements IContextModel {
 			return false;
 		else {
 			for (int i = 0; i < properties.size(); i++) {
-				boolean notFound=false;
-				for (int j = 0; j < entity.getProperties().size()&& !notFound; j++) {
-					if(properties.get(i).equals(entity.getProperties().get(j)))
-						notFound=true;
+				boolean notFound = false;
+				for (int j = 0; j < entity.getProperties().size() && !notFound; j++) {
+					if (properties.get(i).equals(entity.getProperties().get(j)))
+						notFound = true;
 				}
-				if(!notFound)
+				if (!notFound)
 					return false;
 			}
 		}

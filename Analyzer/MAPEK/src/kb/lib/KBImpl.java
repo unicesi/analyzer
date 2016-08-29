@@ -14,14 +14,15 @@ import sloContractLibrary.SloObligation;
 import sloContractLibrary.SloPredicate;
 
 public class KBImpl extends AKB {
-	
+
 	private KBDBPostgres dbconn;
-	
+
 	public KBImpl() {
 
-		/// Time Stamp
+		// / Time Stamp
 		Calendar calendarTimeStamp = Calendar.getInstance();
-		//System.out.println("KB started at: " + calendarTimeStamp.getTimeInMillis());
+		// System.out.println("KB started at: " +
+		// calendarTimeStamp.getTimeInMillis());
 
 		System.out.println("[KB Service Started]");
 		monitoringPolicies = new ArrayList<MonitoringPolicy>();
@@ -79,7 +80,7 @@ public class KBImpl extends AKB {
 
 		System.out.println("[KB Service] Slo Contracts loaded");
 	}
-	
+
 	private QoSContract initQoSContractThroughput() {
 
 		System.out.println("[KB Service] - QoS Contract Throughput <start>");
@@ -105,15 +106,15 @@ public class KBImpl extends AKB {
 				.getDataBaseInformation("select * from \"c3predicate\"");
 
 		if (dbQuery.size() > 0) {
-//		
-//		Integer[][] val = new Integer[30][2];
-//		for (int i = 0; i < val.length; i++) {
-//			val[i][0] = i+1;
-//			val[i][1] = i<15?30:i<20?70:90;
-//		}
-		
+			//
+			// Integer[][] val = new Integer[30][2];
+			// for (int i = 0; i < val.length; i++) {
+			// val[i][0] = i+1;
+			// val[i][1] = i<15?30:i<20?70:90;
+			// }
+
 			for (int i = 0; i < dbQuery.size(); i++) {
-				String[] val=(String[])dbQuery.get(i);
+				String[] val = (String[]) dbQuery.get(i);
 				int dia = Integer.parseInt(val[0]);
 				predicate.getValues().add(dia);
 				int tx = Integer.parseInt(val[1]);
@@ -136,16 +137,13 @@ public class KBImpl extends AKB {
 			propertyP1.addObligation(obligation);
 
 			System.out.println("[KB Service] - QoS Contract Throughput <end>");
-		
 
 			return contractThrougput;
 		} else {
-			
-					
+
 			System.out
 					.println("[AMC Service] - QoS Contract Throughput could not load SLOContracts from data base");
-		
-			
+
 			return null;
 		}
 	}
