@@ -1,5 +1,0 @@
-0. Iniciar postgres, la bdatos mapek debe estar arriba y las tablas inicializadas
-
-1. ejecutar ./MAPEK/runMAPE.sh
-
-2. ejecutar ./runMAPEK/run.sh
