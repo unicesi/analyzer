@@ -1,0 +1,63 @@
+<class-diagram version="1.0.8" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <package id="1" language="java" name="amc.dbconn" project="MAPEK" file="/MAPEK/src/amc/dbconn" binary="false">    
+    <position height="-1" width="-1" x="91" y="62"/>  
+  </package>  
+  <package id="2" language="java" name="analyzer.lib" project="MAPEK" file="/MAPEK/src/analyzer/lib" binary="false">    
+    <position height="-1" width="-1" x="246" y="119"/>  
+  </package>  
+  <package id="3" language="java" name="effector.lib" project="MAPEK" file="/MAPEK/src/effector/lib" binary="false">    
+    <position height="-1" width="-1" x="90" y="299"/>  
+  </package>  
+  <package id="4" language="java" name="kb.lib" project="MAPEK" file="/MAPEK/src/kb/lib" binary="false">    
+    <position height="-1" width="-1" x="577" y="254"/>  
+  </package>  
+  <package id="5" language="java" name="sensor.lib" project="MAPEK" file="/MAPEK/src/sensor/lib" binary="false">    
+    <position height="-1" width="-1" x="584" y="162"/>  
+  </package>  
+  <package id="6" language="java" name="sensor.api" project="MAPEK" file="/MAPEK/src/sensor/api" binary="false">    
+    <position height="-1" width="-1" x="584" y="109"/>  
+  </package>  
+  <package id="7" language="java" name="sensor.dbconn" project="MAPEK" file="/MAPEK/src/sensor/dbconn" binary="false">    
+    <position height="-1" width="-1" x="586" y="55"/>  
+  </package>  
+  <package id="8" language="java" name="monitor.api" project="MAPEK" file="/MAPEK/src/monitor/api" binary="false">    
+    <position height="-1" width="-1" x="407" y="63"/>  
+  </package>  
+  <package id="9" language="java" name="amc.lib" project="MAPEK" file="/MAPEK/src/amc/lib" binary="false">    
+    <position height="-1" width="-1" x="93" y="164"/>  
+  </package>  
+  <package id="10" language="java" name="analyzer.api" project="MAPEK" file="/MAPEK/src/analyzer/api" binary="false">    
+    <position height="-1" width="-1" x="246" y="64"/>  
+  </package>  
+  <package id="11" language="java" name="amc.api" project="MAPEK" file="/MAPEK/src/amc/api" binary="false">    
+    <position height="-1" width="-1" x="91" y="114"/>  
+  </package>  
+  <package id="12" language="java" name="planner.api" project="MAPEK" file="/MAPEK/src/planner/api" binary="false">    
+    <position height="-1" width="-1" x="401" y="253"/>  
+  </package>  
+  <package id="13" language="java" name="effector.api" project="MAPEK" file="/MAPEK/src/effector/api" binary="false">    
+    <position height="-1" width="-1" x="91" y="250"/>  
+  </package>  
+  <package id="14" language="java" name="monitor.lib" project="MAPEK" file="/MAPEK/src/monitor/lib" binary="false">    
+    <position height="-1" width="-1" x="407" y="115"/>  
+  </package>  
+  <package id="15" language="java" name="planner.lib" project="MAPEK" file="/MAPEK/src/planner/lib" binary="false">    
+    <position height="-1" width="-1" x="404" y="302"/>  
+  </package>  
+  <package id="16" language="java" name="executer.lib" project="MAPEK" file="/MAPEK/src/executer/lib" binary="false">    
+    <position height="-1" width="-1" x="248" y="300"/>  
+  </package>  
+  <package id="17" language="java" name="kb.api" project="MAPEK" file="/MAPEK/src/kb/api" binary="false">    
+    <position height="-1" width="-1" x="577" y="309"/>  
+  </package>  
+  <package id="18" language="java" name="executer.api" project="MAPEK" file="/MAPEK/src/executer/api" binary="false">    
+    <position height="-1" width="-1" x="246" y="251"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
