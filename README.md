@@ -16,4 +16,6 @@ This are the compile instructions for deploy this project
 
 Have the java_home set up to a 1.6 jdk
 
-frascati compile src MAPEK /{project-path}/MAPEK/library-0.0.1-SNAPSHOT-jar-with-dependencies.jar:/{project-path}/MAPEK/commons-math3-3.5.jar
+Once the postgresDB and the RabbitMQ is setup, run the following commands after deploy the test project
+
+    java -jar projectname.jar
